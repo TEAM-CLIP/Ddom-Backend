@@ -1,11 +1,11 @@
-package com.clip.ddom
+package com.clip.bootstrap
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class DdomBackendApplication
+class BootstrapModuleApplication
 
 fun main(args: Array<String>) {
-	runApplication<DdomBackendApplication>(*args)
+	runApplication<BootstrapModuleApplication>(*args)
 }
