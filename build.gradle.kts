@@ -57,6 +57,8 @@ allprojects {
 		testFixturesImplementation(Dependencies.Kotlin.KOTLIN_TEST_JUNIT5)
 		testImplementation(Dependencies.Kotest.KOTEST_RUNNER)
 		testImplementation(Dependencies.Kotest.KOTEST_ASSERTIONS_CORE)
+		implementation(Dependencies.Jackson.KOTLIN)
+		implementation(Dependencies.Jackson.JAVA_TIME)
 		testImplementation(Dependencies.Kotest.KOTEST_PROPERTY)
 		testImplementation(Dependencies.Mockk.MOCKK)
 		implementation(Dependencies.Logger.KOTLIN_OSHAI)

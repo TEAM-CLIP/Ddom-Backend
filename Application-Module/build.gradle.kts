@@ -3,6 +3,6 @@ dependencies {
     implementation(project(Modules.COMMON_MODULE))
 
     implementation(Dependencies.Spring.TRANSACTION)
-    implementation(kotlin("script-runtime"))
-}
 
+    testImplementation(testFixtures(project(Modules.DOMAIN_MODULE)))
+}
