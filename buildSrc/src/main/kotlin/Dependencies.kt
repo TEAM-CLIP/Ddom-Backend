@@ -56,4 +56,9 @@ object Dependencies {
         const val FLYWAY_CORE = "org.flywaydb:flyway-core"
         const val FLYWAY_MYSQL = "org.flywaydb:flyway-mysql"
     }
+
+    object Jackson {
+        const val KOTLIN = "com.fasterxml.jackson.module:jackson-module-kotlin"
+        const val JAVA_TIME = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    }
 }
