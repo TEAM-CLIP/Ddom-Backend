@@ -9,4 +9,8 @@ dependencies {
 
     implementation(Dependencies.FLYWAY.FLYWAY_CORE)
     implementation(Dependencies.FLYWAY.FLYWAY_MYSQL)
+
+    implementation(project(Modules.DOMAIN_MODULE))
+    implementation(project(Modules.APPLICATION_MODULE))
+    implementation(project(Modules.COMMON_MODULE))
 }
