@@ -58,11 +58,11 @@ object JwtProvider {
         issuer: String,
         vararg claimKeys: String
     ): Map<String, String> {
-        val jws = getTokenJws(token, publicKey, issuer)
-        return extractClaims(jws, *claimKeys)
+        val jws = parseAndVerifyTokenClaims(token, publicKey, issuer)
+        return extractFromClaims(jws, *claimKeys)
     }
 
-    private fun getTokenJws(
+    private fun parseAndVerifyTokenClaims(
         token: String,
         publicKey: PublicKey,
         issuer: String
@@ -74,7 +74,7 @@ object JwtProvider {
             .parseSignedClaims(token)
     }
 
-    private fun extractClaims(jws: Jws<Claims>, vararg claimKeys: String): Map<String, String> {
+    private fun extractFromClaims(jws: Jws<Claims>, vararg claimKeys: String): Map<String, String> {
         val claims = jws.payload
         return claimKeys.associateWith { key ->
             claims[key]?.toString() ?: throw IllegalArgumentException("Claim $key not found in JWT")
