@@ -36,12 +36,14 @@ class RegisterUserService(
                 UserPermission(
                     command.servicePermission,
                     command.privatePermission,
+                    command.advertisingPermission,
                     command.marketingPermission,
                     command.alarmPermission,
                     command.cameraPermission,
-                    command.locationPermission,
+                    command.locationPermission
                 ),
                 email = userClaims.email,
+                phoneNumber = command.phoneNumber
             )
         val userAuth =
             UserAuth(

@@ -21,11 +21,13 @@ class UserController(
                 request.registerToken,
                 request.servicePermission,
                 request.privatePermission,
+                request.advertisingPermission,
                 request.marketingPermission,
                 request.alarmPermission,
                 request.cameraPermission,
                 request.locationPermission,
-                request.nickname
+                request.nickname,
+                request.phoneNumber
             )
         )
         return RegisterUserResponse(response.accessToken, response.refreshToken)

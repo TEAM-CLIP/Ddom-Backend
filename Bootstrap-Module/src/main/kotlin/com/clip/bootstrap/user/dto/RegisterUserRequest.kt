@@ -10,6 +10,8 @@ data class RegisterUserRequest(
     val servicePermission: Boolean,
     @Schema(description = "개인정보 수집 및 이용 동의")
     val privatePermission: Boolean,
+    @Schema(description = "맞춤형 광고 및 개인정보 제공 동의")
+    val advertisingPermission: Boolean,
     @Schema(description = "마케팅 정보 수신 동의")
     val marketingPermission: Boolean,
     @Schema(description = "알림 수신 동의")
@@ -19,6 +21,8 @@ data class RegisterUserRequest(
     @Schema(description = "위치 권한 동의")
     val locationPermission: Boolean,
     @Schema(description = "닉네임")
-    val nickname: String
+    val nickname: String,
+    @Schema(description = "핸드폰 번호")
+    val phoneNumber: String
 ) {
 }

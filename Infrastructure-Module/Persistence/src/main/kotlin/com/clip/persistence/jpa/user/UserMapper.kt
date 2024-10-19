@@ -17,15 +17,17 @@ object UserMapper {
             id = user.id.value,
             nickname = user.nickname,
             email = user.email,
+            phoneNumber = user.phoneNumber,
             userPermission =
                 UserPermissionEntity(
                     servicePermission = user.permission.servicePermission,
                     privatePermission = user.permission.privatePermission,
+                    advertisingPermission = user.permission.advertisingPermission,
                     marketingPermission = user.permission.marketingPermission,
                     alarmPermission = user.permission.alarmPermission,
                     cameraPermission = user.permission.cameraPermission,
                     locationPermission = user.permission.locationPermission,
-                ),
+                )
         )
 
     fun toUser(userEntity: UserEntity): User =
@@ -33,15 +35,17 @@ object UserMapper {
             id = DomainId(userEntity.id),
             nickname = userEntity.nickname,
             email = userEntity.email,
+            phoneNumber = userEntity.phoneNumber,
             permission =
                 UserPermission(
                     servicePermission = userEntity.userPermission.servicePermission,
                     privatePermission = userEntity.userPermission.privatePermission,
+                    advertisingPermission = userEntity.userPermission.advertisingPermission,
                     marketingPermission = userEntity.userPermission.marketingPermission,
                     alarmPermission = userEntity.userPermission.alarmPermission,
                     cameraPermission = userEntity.userPermission.cameraPermission,
                     locationPermission = userEntity.userPermission.locationPermission,
-                ),
+                )
         )
 
     fun toUserAuthEntity(userAuth: UserAuth): UserAuthEntity =

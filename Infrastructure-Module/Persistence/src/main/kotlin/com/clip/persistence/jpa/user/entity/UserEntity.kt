@@ -9,6 +9,7 @@ class UserEntity(
     id: String,
     nickname: String,
     email: String,
+    phoneNumber: String,
     userPermission: UserPermissionEntity,
 ) : AggregateRoot<UserEntity>(id) {
     @Column(nullable = false)
@@ -18,6 +19,8 @@ class UserEntity(
         columnDefinition = "varchar(100)",
     )
     val email: String = email
+
+    val phoneNumber: String = phoneNumber
 
     @OneToOne(cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
     val userPermission: UserPermissionEntity = userPermission
