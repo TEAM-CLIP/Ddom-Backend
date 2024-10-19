@@ -1,7 +1,7 @@
 package com.clip.bootstrap.user.controller
 
 import com.clip.application.user.port.`in`.RegisterUserUsecase
-import com.clip.application.user.port.`in`.VerifyNicknameUsecase
+import com.clip.application.user.port.`in`.VerifyUserNicknameUsecase
 import com.clip.bootstrap.user.api.UserApi
 import com.clip.bootstrap.user.dto.NicknameVerifyRequest
 import com.clip.bootstrap.user.dto.NicknameVerifyResponse
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class UserController(
     private val registerUserUsecase: RegisterUserUsecase,
-    private val verifyNicknameUsecase: VerifyNicknameUsecase
+    private val verifyUserNicknameUsecase: VerifyUserNicknameUsecase
 ) : UserApi {
 
     override fun registerUser(request: RegisterUserRequest): RegisterUserResponse {
@@ -34,8 +34,8 @@ class UserController(
     }
 
     override fun verifyNickname(request: NicknameVerifyRequest): NicknameVerifyResponse {
-        val response = verifyNicknameUsecase.verifyNickname(
-            VerifyNicknameUsecase.Command(
+        val response = verifyUserNicknameUsecase.verifyNickname(
+            VerifyUserNicknameUsecase.Command(
                 request.nickname
             )
         )
