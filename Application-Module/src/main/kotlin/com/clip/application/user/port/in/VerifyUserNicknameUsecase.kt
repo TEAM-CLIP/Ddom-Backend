@@ -1,6 +1,6 @@
 package com.clip.application.user.port.`in`
 
-interface VerifyNicknameUsecase {
+interface VerifyUserNicknameUsecase {
 
     fun verifyNickname(command: Command): Response
 

@@ -2,6 +2,7 @@ package com.clip.application.user.service
 
 import com.clip.application.user.exception.UserException
 import com.clip.application.user.port.`in`.RegisterUserUsecase
+import com.clip.application.user.port.`in`.VerifyUserNicknameUsecase
 import com.clip.application.user.port.out.UserAuthManagementPort
 import com.clip.application.user.port.out.UserManagementPort
 import com.clip.application.user.port.out.UserTokenConvertPort
@@ -15,12 +16,13 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class RegisterUserService(
+class UserCommandService (
     private val userTokenConvertPort: UserTokenConvertPort,
     private val userAuthManagementPort: UserAuthManagementPort,
     private val userManagementPort: UserManagementPort,
-    private val userTokenManagementPort: UserTokenManagementPort,
-) : RegisterUserUsecase {
+    private val userTokenManagementPort: UserTokenManagementPort
+) : RegisterUserUsecase, VerifyUserNicknameUsecase {
+
     override fun registerUser(command: RegisterUserUsecase.Command): RegisterUserUsecase.Response {
         if (!userTokenManagementPort.isExistsToken(command.registerToken)) {
             throw UserException.UserPermissionDeniedException("존재하지 않는 가입 토큰입니다.")
@@ -58,8 +60,15 @@ class RegisterUserService(
         val accessToken = userTokenConvertPort.generateAccessToken(registerUser)
         val refreshToken = userTokenConvertPort.generateRefreshToken(registerUser)
 
-        userTokenManagementPort.saveUserToken(UserToken(token = refreshToken))
+        userTokenManagementPort.saveUserToken(UserToken(userId = registerUser.id, token = refreshToken))
 
         return RegisterUserUsecase.Response(accessToken, refreshToken)
+    }
+
+    override fun verifyNickname(command: VerifyUserNicknameUsecase.Command): VerifyUserNicknameUsecase.Response {
+        val isDuplicated = userManagementPort.isExistsNickname(command.nickName)
+        return VerifyUserNicknameUsecase.Response(
+            isDuplicated = isDuplicated
+        )
     }
 }
