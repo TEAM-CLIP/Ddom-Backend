@@ -1,5 +1,7 @@
 package com.clip.bootstrap.auth.api
 
+import com.clip.bootstrap.auth.dto.ReissueRequest
+import com.clip.bootstrap.auth.dto.ReissueResponse
 import com.clip.bootstrap.auth.dto.SocialLoginRequest
 import com.clip.bootstrap.auth.dto.SocialLoginResponse
 import com.clip.bootstrap.common.exception.ExceptionResponse
@@ -61,4 +63,33 @@ interface AuthApi {
         @RequestBody request: SocialLoginRequest
     ): ResponseEntity<SocialLoginResponse>
 
+    @Operation(summary = "토큰 재발급")
+    @PostMapping("/reissue")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200",
+                description = "토큰 재발급 성공",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        schema = Schema(implementation = ReissueResponse::class)
+                    )
+                ]
+            ),
+            ApiResponse(
+                responseCode = "4XX",
+                description = "토큰 재발급 실패, 다시 로그인 필요",
+                content = [
+                    Content(
+                        mediaType = "application/json",
+                        schema = Schema(implementation = ExceptionResponse::class)
+                    )
+                ]
+            ),
+        ]
+    )
+    fun reissueToken(
+        @RequestBody request: ReissueRequest
+    ): ReissueResponse
 }

@@ -15,8 +15,12 @@ import jakarta.persistence.Table
 )
 class UserTokenEntity(
     id: String,
+    userId : String?,
     token: String,
 ) : AggregateRoot<UserTokenEntity>(id) {
     @Column(nullable = false, unique = true, length = 500)
     val token: String = token
+
+    @Column(length = 500, name = "user_id")
+    val userId: String? = userId
 }
