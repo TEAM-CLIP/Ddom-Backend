@@ -1,4 +1,4 @@
-package com.clip.bootstrap
+package com.clip.api
 
 import com.clip.application.ApplicationConfig
 import com.clip.client.ClientConfig
@@ -10,15 +10,15 @@ import org.springframework.context.annotation.Import
 
 @SpringBootApplication
 @Import(
-	value = [
-		ApplicationConfig::class,
-		ClientConfig::class,
-		PersistenceConfig::class,
-		SecurityConfig::class
-	]
+    value = [
+        ApplicationConfig::class,
+        ClientConfig::class,
+        PersistenceConfig::class,
+        SecurityConfig::class
+    ]
 )
-class BootstrapModuleApplication
+class ApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<BootstrapModuleApplication>(*args)
+    runApplication<ApiApplication>(*args)
 }

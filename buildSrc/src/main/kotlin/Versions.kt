@@ -4,8 +4,6 @@ object Versions {
 
     const val JAVA_VERSION = "17"
 
-    const val ROOT_MODULE ="Bootstrap-Module"
-
     const val KOTEST_VERSION = "5.9.1"
     const val MOCKK_VERSION = "1.13.12"
     const val JJWT_VERSION = "0.12.6"

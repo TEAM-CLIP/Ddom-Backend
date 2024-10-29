@@ -10,6 +10,10 @@ object Dependencies {
         const val TRANSACTION = "org.springframework:spring-tx"
     }
 
+    object TemplateEngine{
+        const val THYMELEAF = "org.springframework.boot:spring-boot-starter-thymeleaf"
+    }
+
     object DATABASE {
         const val MYSQL = "com.mysql:mysql-connector-j"
         const val H2 = "com.h2database:h2"
