@@ -1,6 +1,7 @@
 rootProject.name = "ddom"
 
-include(":Bootstrap-Module")
+include(":Bootstrap-Module:Admin")
+include(":Bootstrap-Module:Api")
 include(":Application-Module")
 include(":Domain-Module")
 include(":Common-Module")
