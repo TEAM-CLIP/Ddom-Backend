@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - '!Bootstrap-Module/**'
+      - 'Application-Module/**'
+      - 'Common-Module/**'
+      - 'Domain-Module/**'
+      - 'Infrastructure-Module/**'
 
 jobs:
   deploy-Admin:
