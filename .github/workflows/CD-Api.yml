@@ -1,6 +1,7 @@
 name: Deploy Api
 
 on:
+  workflow_call:
   push:
     branches:
       - main
