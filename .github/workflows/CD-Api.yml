@@ -26,7 +26,7 @@ jobs:
     uses: ./.github/workflows/ecs_push.yml
     with:
       project-name: Api
-      ecr-repository: 677276077921.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/Api
+      ecr-repository: 677276077921.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/api
       ecs-cluster: Ddom
       ecs-service: ddom-api
       container-name: api
