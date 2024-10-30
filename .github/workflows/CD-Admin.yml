@@ -17,7 +17,7 @@ jobs:
     if: ${{ needs.build.outputs.success == 'true' }}
     with:
       project-name: Admin
-      ecr-repository: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/admin
+      ecr-repository: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/admin
       ecs-cluster: ddom
       ecs-service: ddom-admin
       container-name: admin
