@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+
 jobs:
   build:
     uses: ./.github/workflows/gradle_build.yml
@@ -17,7 +20,7 @@ jobs:
     if: ${{ needs.build.outputs.success == 'true' }}
     with:
       project-name: Admin
-      ecr-repository: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/admin
+      ecr-repository: ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/admin
       ecs-cluster: ddom
       ecs-service: ddom-admin
       container-name: admin
