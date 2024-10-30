@@ -59,7 +59,7 @@ jobs:
 
       - name: Docker Build
         run: |
-          docker buildx build --platform linux/amd64 linux/arm64 -t ${{ inputs.ecr-repository }}:${{ github.sha }} -f ${{ inputs.docker-file-path }} .
+          docker buildx build --platform linux/amd64 --platform linux/arm64 -t ${{ inputs.ecr-repository }}:${{ github.sha }} -f ${{ inputs.docker-file-path }} .
           docker tag ${{ inputs.ecr-repository }}:${{ github.sha }} ${{ inputs.ecr-repository }}:latest
 
       - name: Docker Push
