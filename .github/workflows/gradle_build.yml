@@ -55,3 +55,10 @@ jobs:
           else
             echo "success=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Upload build artifacts
+        if: ${{ inputs.project-name != 'ALL' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.project-name }}-build
+          path: ./Bootstrap-Module/${{ inputs.project-name }}/build/libs

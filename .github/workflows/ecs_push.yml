@@ -40,6 +40,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Download the gradle Build File
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{inputs.project-name}}-build
+          path: ./Bootstrap-Module/${{inputs.project-name}}/build/libs
+
       - name: Configure AWS credentials For ECR
         uses: aws-actions/configure-aws-credentials@v1
         with:
