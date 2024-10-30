@@ -14,7 +14,7 @@ jobs:
   push-image:
     needs: build
     uses: ./.github/workflows/ecs_push.yml
-    if: ${{ needs.deploy.outputs.success == 'true' }}
+    if: ${{ needs.build.outputs.success == 'true' }}
     with:
       project-name: Admin
       ecr-repository: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/admin
