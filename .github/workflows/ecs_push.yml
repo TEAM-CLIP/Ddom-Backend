@@ -86,7 +86,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: ${{ inputs.container-name }}
-          image: ${{ steps.docker-push.outputs.new_image_name }}
+          image: ${{ inputs.ecr-repository }}:${{ github.sha }}
 
       - name: Deploy New ${{inputs.project-name}} ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
