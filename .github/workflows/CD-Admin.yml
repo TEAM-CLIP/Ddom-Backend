@@ -1,0 +1,30 @@
+name: Deploy Admin
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: ./.github/workflows/gradle_build.yml
+    with:
+      project-name: Admin
+
+  push-image:
+    needs: build
+    uses: ./.github/workflows/ecs_push.yml
+    if: ${{ needs.deploy.outputs.success == 'true' }}
+    with:
+      project-name: Admin
+      ecr-repository: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/admin
+      ecs-cluster: ddom
+      ecs-service: ddom-admin
+      container-name: admin
+      docker-file-path: ./Bootstrap-Module/Admin/Dockerfile
+      task-definition: ddom-admin
+    secrets:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ap-northeast-2
+

@@ -47,7 +47,7 @@ jobs:
         continue-on-error: true
         run: ./gradlew build
 
-      - name: 빌드 결과 설정
+      - name: Determine build success
         id: build-result
         run: |
           if [ "${{ steps.gradle-build.outcome }}" == "success" ]; then
