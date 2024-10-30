@@ -1,29 +1,29 @@
-name: Deploy Admin
+name: Deploy Api
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'Bootstrap-Module/Admin/**'
+      - 'Bootstrap-Module/Api/**'
 
 jobs:
   build:
     uses: ./.github/workflows/gradle_build.yml
     with:
-      project-name: Admin
+      project-name: Api
 
   push-image:
     needs: build
     uses: ./.github/workflows/ecs_push.yml
     with:
-      project-name: Admin
-      ecr-repository: 677276077921.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/admin
+      project-name: Api
+      ecr-repository: 677276077921.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/Api
       ecs-cluster: Ddom
-      ecs-service: ddom-admin
-      container-name: admin
-      docker-file-path: ./Bootstrap-Module/Admin/Dockerfile
-      task-definition: ddom-admin
+      ecs-service: ddom-api
+      container-name: api
+      docker-file-path: ./Bootstrap-Module/Api/Dockerfile
+      task-definition: ddom-api
     secrets:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
