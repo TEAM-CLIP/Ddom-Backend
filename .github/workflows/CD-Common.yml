@@ -1,0 +1,16 @@
+name: Deploy Common
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '!Bootstrap-Module/**'
+
+jobs:
+  deploy-Admin:
+    uses: ./.github/workflows/CD-Admin.yml
+
+  deploy-Api:
+    uses: ./.github/workflows/CD-Api.yml
+
