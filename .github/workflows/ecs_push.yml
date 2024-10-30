@@ -63,12 +63,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Docker Build
-        run: |
-          docker buildx build --platform linux/amd64 --platform linux/arm64 -t ${{ inputs.ecr-repository }}:${{ github.sha }} -f ${{ inputs.docker-file-path }} .
-          docker tag ${{ inputs.ecr-repository }}:${{ github.sha }} ${{ inputs.ecr-repository }}:latest
-
-      - name: Docker Push
+      - name: Docker Build And Push
         uses: docker/build-push-action@v4
         with:
           context: .
