@@ -58,7 +58,7 @@ jobs:
 
       - name: Upload build artifacts
         if: ${{ inputs.project-name != 'ALL' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.project-name }}-build
           path: ./Bootstrap-Module/${{ inputs.project-name }}/build/libs
