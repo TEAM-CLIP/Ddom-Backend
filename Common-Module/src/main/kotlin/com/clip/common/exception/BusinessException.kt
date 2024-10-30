@@ -3,12 +3,11 @@ package com.clip.common.exception
 abstract class BusinessException(
     codePrefix: String = CODE_PREFIX,
     errorCode: Int,
-    httpStatus: Int = DEFAULT_HTTP_STATUS,
+    val httpStatus: Int = DEFAULT_HTTP_STATUS,
     override val message: String = DEFAULT_ERROR_MESSAGE
 ) : RuntimeException(message){
 
     val code: String = "$codePrefix-${errorCode.toString().padStart(DEFAULT_CODE_LENGTH, DEFAULT_CODE_PAD)}"
-    val httpStatus: Int = httpStatus
 
     companion object{
         const val CODE_PREFIX = "UNEXPECTED"
