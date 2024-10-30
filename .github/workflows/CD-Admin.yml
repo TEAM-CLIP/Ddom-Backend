@@ -17,7 +17,7 @@ jobs:
     with:
       project-name: Admin
       ecr-repository: 677276077921.dkr.ecr.ap-northeast-2.amazonaws.com/ddom/admin
-      ecs-cluster: ddom
+      ecs-cluster: Ddom
       ecs-service: ddom-admin
       container-name: admin
       docker-file-path: ./Bootstrap-Module/Admin/Dockerfile
