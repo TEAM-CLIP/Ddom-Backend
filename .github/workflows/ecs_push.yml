@@ -57,22 +57,33 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       - name: Docker Build
         run: |
           docker buildx build --platform linux/amd64 --platform linux/arm64 -t ${{ inputs.ecr-repository }}:${{ github.sha }} -f ${{ inputs.docker-file-path }} .
           docker tag ${{ inputs.ecr-repository }}:${{ github.sha }} ${{ inputs.ecr-repository }}:latest
 
       - name: Docker Push
-        run: |
-          docker push ${{ inputs.ecr-repository }}:${{ github.sha }}
-          docker push ${{ inputs.ecr-repository }}:latest
-          
-          echo "new_image_name=${{ inputs.ecr-repository }}:${{ github.sha }}" >> "$GITHUB_OUTPUT"
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          file: ${{ inputs.docker-file-path }}
+          tags: |
+            ${{ inputs.ecr-repository }}:${{ github.sha }}
+            ${{ inputs.ecr-repository }}:latest
+          platforms: |
+            linux/amd64
+            linux/arm64
 
       - name: Download Task Definition Template
         run: |
           aws ecs describe-task-definition --task-definition ${{ inputs.task-definition }}  --query taskDefinition > task-definition.json
-
 
       - name: Replace the image name in ${{inputs.project-name}} ECS task definition
         id: task-definition
