@@ -1,6 +1,7 @@
 name: Deploy Admin
 
 on:
+  workflow_call:
   push:
     branches:
       - main
