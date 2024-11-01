@@ -1,4 +1,4 @@
-package com.clip.bootstrap.common.config
+package com.clip.api.common.config
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import io.swagger.v3.oas.annotations.servers.Server

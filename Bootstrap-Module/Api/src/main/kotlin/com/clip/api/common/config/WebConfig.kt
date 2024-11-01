@@ -1,6 +1,6 @@
-package com.clip.bootstrap.common.config
+package com.clip.api.common.config
 
-import com.clip.bootstrap.common.security.annotation.AccessUserArgumentResolver
+import com.clip.api.common.security.annotation.AccessUserArgumentResolver
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.servlet.config.annotation.CorsRegistry

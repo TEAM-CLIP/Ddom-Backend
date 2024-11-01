@@ -1,4 +1,4 @@
-package com.clip.bootstrap.common.security.vo
+package com.clip.api.common.security.vo
 
 import com.clip.common.security.Authentication
 

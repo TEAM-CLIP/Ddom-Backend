@@ -1,6 +1,6 @@
-package com.clip.bootstrap.common.security.annotation
+package com.clip.api.common.security.annotation
 
-import com.clip.bootstrap.common.security.vo.UserAuthentication
+import com.clip.api.common.security.vo.UserAuthentication
 import com.clip.common.security.SecurityContextHolder
 import org.springframework.core.MethodParameter
 import org.springframework.stereotype.Component

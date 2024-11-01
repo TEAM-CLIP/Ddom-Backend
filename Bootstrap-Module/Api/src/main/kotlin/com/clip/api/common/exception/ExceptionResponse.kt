@@ -1,4 +1,4 @@
-package com.clip.bootstrap.common.exception
+package com.clip.api.common.exception
 
 import com.clip.common.exception.BusinessException
 import io.swagger.v3.oas.annotations.media.Schema

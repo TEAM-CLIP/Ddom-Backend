@@ -1,4 +1,4 @@
-package com.clip.bootstrap.auth.dto
+package com.clip.api.auth.dto
 
 data class ReissueRequest(
     val refreshToken: String

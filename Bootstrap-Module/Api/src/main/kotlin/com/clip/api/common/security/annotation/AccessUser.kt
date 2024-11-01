@@ -1,4 +1,4 @@
-package com.clip.bootstrap.common.security.annotation
+package com.clip.api.common.security.annotation
 
 import io.swagger.v3.oas.annotations.Parameter
 

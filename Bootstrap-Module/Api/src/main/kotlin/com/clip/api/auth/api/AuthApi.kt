@@ -1,10 +1,10 @@
-package com.clip.bootstrap.auth.api
+package com.clip.api.auth.api
 
-import com.clip.bootstrap.auth.dto.ReissueRequest
-import com.clip.bootstrap.auth.dto.ReissueResponse
-import com.clip.bootstrap.auth.dto.SocialLoginRequest
-import com.clip.bootstrap.auth.dto.SocialLoginResponse
-import com.clip.bootstrap.common.exception.ExceptionResponse
+import com.clip.api.auth.dto.ReissueRequest
+import com.clip.api.auth.dto.ReissueResponse
+import com.clip.api.auth.dto.SocialLoginRequest
+import com.clip.api.auth.dto.SocialLoginResponse
+import com.clip.api.common.exception.ExceptionResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
