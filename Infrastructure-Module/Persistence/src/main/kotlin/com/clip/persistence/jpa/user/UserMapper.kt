@@ -23,10 +23,7 @@ object UserMapper {
                     servicePermission = user.permission.servicePermission,
                     privatePermission = user.permission.privatePermission,
                     advertisingPermission = user.permission.advertisingPermission,
-                    marketingPermission = user.permission.marketingPermission,
-                    alarmPermission = user.permission.alarmPermission,
-                    cameraPermission = user.permission.cameraPermission,
-                    locationPermission = user.permission.locationPermission,
+                    marketingPermission = user.permission.marketingPermission
                 )
         )
 
@@ -41,10 +38,7 @@ object UserMapper {
                     servicePermission = userEntity.userPermission.servicePermission,
                     privatePermission = userEntity.userPermission.privatePermission,
                     advertisingPermission = userEntity.userPermission.advertisingPermission,
-                    marketingPermission = userEntity.userPermission.marketingPermission,
-                    alarmPermission = userEntity.userPermission.alarmPermission,
-                    cameraPermission = userEntity.userPermission.cameraPermission,
-                    locationPermission = userEntity.userPermission.locationPermission,
+                    marketingPermission = userEntity.userPermission.marketingPermission
                 )
         )
 

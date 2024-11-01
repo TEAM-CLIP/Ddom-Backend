@@ -10,8 +10,5 @@ class UserPermissionEntity(
     val servicePermission: Boolean,
     val privatePermission: Boolean,
     val advertisingPermission: Boolean,
-    val marketingPermission: Boolean,
-    val alarmPermission: Boolean,
-    val cameraPermission: Boolean,
-    val locationPermission: Boolean,
+    val marketingPermission: Boolean
 ) : BaseEntity()

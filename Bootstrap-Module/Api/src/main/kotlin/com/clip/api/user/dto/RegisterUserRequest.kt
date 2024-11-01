@@ -1,4 +1,4 @@
-package com.clip.bootstrap.user.dto
+package com.clip.api.user.dto
 
 import io.swagger.v3.oas.annotations.media.Schema
 
@@ -14,12 +14,6 @@ data class RegisterUserRequest(
     val advertisingPermission: Boolean,
     @Schema(description = "마케팅 정보 수신 동의")
     val marketingPermission: Boolean,
-    @Schema(description = "알림 수신 동의")
-    val alarmPermission: Boolean,
-    @Schema(description = "카메라 권한 동의")
-    val cameraPermission: Boolean,
-    @Schema(description = "위치 권한 동의")
-    val locationPermission: Boolean,
     @Schema(description = "닉네임")
     val nickname: String,
     @Schema(description = "핸드폰 번호")

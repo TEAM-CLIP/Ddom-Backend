@@ -1,9 +1,9 @@
-package com.clip.bootstrap.user.api
+package com.clip.api.user.api
 
-import com.clip.bootstrap.user.dto.NicknameVerifyRequest
-import com.clip.bootstrap.user.dto.NicknameVerifyResponse
-import com.clip.bootstrap.user.dto.RegisterUserRequest
-import com.clip.bootstrap.user.dto.RegisterUserResponse
+import com.clip.api.user.dto.NicknameVerifyRequest
+import com.clip.api.user.dto.NicknameVerifyResponse
+import com.clip.api.user.dto.RegisterUserRequest
+import com.clip.api.user.dto.RegisterUserResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
