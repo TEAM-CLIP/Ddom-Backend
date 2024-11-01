@@ -1,12 +1,12 @@
-package com.clip.bootstrap.auth.controller
+package com.clip.api.auth.controller
 
 import com.clip.application.user.port.`in`.ReissueTokenUsecase
 import com.clip.application.user.port.`in`.SocialLoginUsecase
-import com.clip.bootstrap.auth.api.AuthApi
-import com.clip.bootstrap.auth.dto.ReissueRequest
-import com.clip.bootstrap.auth.dto.ReissueResponse
-import com.clip.bootstrap.auth.dto.SocialLoginRequest
-import com.clip.bootstrap.auth.dto.SocialLoginResponse
+import com.clip.api.auth.api.AuthApi
+import com.clip.api.auth.dto.ReissueRequest
+import com.clip.api.auth.dto.ReissueResponse
+import com.clip.api.auth.dto.SocialLoginRequest
+import com.clip.api.auth.dto.SocialLoginResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController

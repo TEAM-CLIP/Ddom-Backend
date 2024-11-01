@@ -1,5 +1,6 @@
-package com.clip.bootstrap.common.exception
+package com.clip.api.common.exception
 
+import com.clip.api.common.exception.ExceptionResponse
 import com.clip.common.exception.BusinessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

@@ -1,7 +1,7 @@
-package com.clip.bootstrap.common.security.filter
+package com.clip.api.common.security.filter
 
 import com.clip.application.user.port.`in`.TokenResolveUsecase
-import com.clip.bootstrap.common.security.vo.UserAuthentication
+import com.clip.api.common.security.vo.UserAuthentication
 import com.clip.common.security.SecurityContext
 import com.clip.common.security.SecurityContextHolder
 import jakarta.servlet.FilterChain

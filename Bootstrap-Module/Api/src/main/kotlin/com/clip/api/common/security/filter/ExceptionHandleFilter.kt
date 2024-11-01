@@ -1,6 +1,6 @@
-package com.clip.bootstrap.common.security.filter
+package com.clip.api.common.security.filter
 
-import com.clip.bootstrap.common.exception.ExceptionResponse
+import com.clip.api.common.exception.ExceptionResponse
 import com.clip.common.exception.BusinessException
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.servlet.FilterChain
