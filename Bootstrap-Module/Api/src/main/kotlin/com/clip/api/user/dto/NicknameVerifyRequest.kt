@@ -1,4 +1,4 @@
-package com.clip.bootstrap.user.dto
+package com.clip.api.user.dto
 
 import io.swagger.v3.oas.annotations.media.Schema
 

@@ -11,9 +11,6 @@ interface RegisterUserUsecase {
         val privatePermission: Boolean,
         val advertisingPermission: Boolean,
         val marketingPermission: Boolean,
-        val alarmPermission: Boolean,
-        val cameraPermission: Boolean,
-        val locationPermission: Boolean,
         val nickname: String,
         val phoneNumber: String
     )

@@ -40,9 +40,6 @@ class UserCommandService (
                     command.privatePermission,
                     command.advertisingPermission,
                     command.marketingPermission,
-                    command.alarmPermission,
-                    command.cameraPermission,
-                    command.locationPermission
                 ),
                 email = userClaims.email,
                 phoneNumber = command.phoneNumber
