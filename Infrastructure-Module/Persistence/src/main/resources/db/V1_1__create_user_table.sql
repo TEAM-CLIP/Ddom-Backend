@@ -1,3 +1,15 @@
+CREATE TABLE user_permission
+(
+    id                     VARCHAR(255) NOT NULL,
+    created_at             datetime     NULL,
+    updated_at             datetime     NULL,
+    service_permission     BIT(1)       NOT NULL,
+    private_permission     BIT(1)       NOT NULL,
+    advertising_permission BIT(1)       NOT NULL,
+    marketing_permission   BIT(1)       NOT NULL,
+    CONSTRAINT pk_user_permission PRIMARY KEY (id)
+);
+
 CREATE TABLE user
 (
     id                 VARCHAR(255) NOT NULL,
@@ -31,17 +43,7 @@ ALTER TABLE user_auth
     ADD CONSTRAINT FK_USER_AUTH_ON_USERID FOREIGN KEY (user_id) REFERENCES user (id);
 
 
-CREATE TABLE user_permission
-(
-    id                     VARCHAR(255) NOT NULL,
-    created_at             datetime     NULL,
-    updated_at             datetime     NULL,
-    service_permission     BIT(1)       NOT NULL,
-    private_permission     BIT(1)       NOT NULL,
-    advertising_permission BIT(1)       NOT NULL,
-    marketing_permission   BIT(1)       NOT NULL,
-    CONSTRAINT pk_user_permission PRIMARY KEY (id)
-);
+
 
 CREATE TABLE user_token
 (
