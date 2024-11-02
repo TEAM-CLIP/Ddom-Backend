@@ -107,7 +107,7 @@ const StoreContact = {
 
     openAddModal() {
         this.currentContactId = null;
-        document.getElementById('contactModalLabel').textContent = '메뉴 추가';
+        document.getElementById('contactModalLabel').textContent = '연락처 추가';
         document.getElementById('contactForm').reset();
         this.contactModal.show();
     },
