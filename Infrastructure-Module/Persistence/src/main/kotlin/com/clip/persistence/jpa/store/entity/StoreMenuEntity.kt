@@ -14,10 +14,10 @@ class StoreMenuEntity(
 ) : AggregateRoot<StoreMenuEntity>(id) {
 
     @Column(nullable = false, length = 255)
-    val name: String = name
+    var name: String = name
 
     @Column(nullable = false)
-    val price: Double = price
+    var price: Double = price
 
     @Column(nullable = false)
     val storeId: String = storeId

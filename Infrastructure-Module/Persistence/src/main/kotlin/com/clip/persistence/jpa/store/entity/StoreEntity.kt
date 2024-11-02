@@ -19,31 +19,31 @@ class StoreEntity(
 ) : AggregateRoot<StoreEntity>(id) {
 
     @Column(nullable = false)
-    val name: String = name
+    var name: String = name
 
-    val imgUrl: String = imgUrl
+    var imgUrl: String = imgUrl
 
     @Column(length = 500)
-    val introduction: String = introduction
+    var introduction: String = introduction
 
     @Column(nullable = false)
-    val isRegistered: Boolean = isRegistered
+    var isRegistered: Boolean = isRegistered
 
     @Column(nullable = false)
-    val longitude: Double = longitude
+    var longitude: Double = longitude
 
     @Column(nullable = false)
-    val latitude: Double = latitude
+    var latitude: Double = latitude
 
     @Column(nullable = false)
-    val categoryId: String = categoryId
+    var categoryId: String = categoryId
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     lateinit var category: CategoryEntity
 
     @Column(nullable = false)
-    val zoneId: String = zoneId
+    var zoneId: String = zoneId
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "zoneId", insertable = false, updatable = false)

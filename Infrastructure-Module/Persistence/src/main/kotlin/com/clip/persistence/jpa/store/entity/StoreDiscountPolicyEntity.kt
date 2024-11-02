@@ -14,7 +14,7 @@ class StoreDiscountPolicyEntity(
 ): BaseEntity() {
 
     @Column(nullable = false, length = 255)
-    val title: String = title
+    var title: String = title
 
     @Enumerated(EnumType.STRING)
     @Column(
@@ -22,7 +22,7 @@ class StoreDiscountPolicyEntity(
         nullable = false,
         columnDefinition = "varchar(20)",
     )
-    val method: DiscountPolicyMethod = method
+    var method: DiscountPolicyMethod = method
 
     @Column(nullable = false)
     val storeId: String = storeId

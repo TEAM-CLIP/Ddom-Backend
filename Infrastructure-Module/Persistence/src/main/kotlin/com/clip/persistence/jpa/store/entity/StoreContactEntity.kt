@@ -8,7 +8,7 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "store_contact")
 class StoreContactEntity(
-    val storeId: String,
+    storeId: String,
     contactType: StoreContactType,
     value: String
 ) : BaseEntity() {
@@ -19,14 +19,17 @@ class StoreContactEntity(
         nullable = false,
         columnDefinition = "varchar(20)",
     )
-    val contactType: StoreContactType = contactType
+    var contactType: StoreContactType = contactType
 
     @Column(
         name = "value",
         nullable = false,
         columnDefinition = "varchar(255)",
     )
-    val value: String = value
+    var value: String = value
+
+    @Column(nullable = false)
+    val storeId: String = storeId
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storeId", insertable = false, updatable = false)
