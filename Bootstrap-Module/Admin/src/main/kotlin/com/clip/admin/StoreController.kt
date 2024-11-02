@@ -3,9 +3,12 @@ package com.clip.admin
 import com.clip.admin.dto.GetStoreCategoryResponse
 import com.clip.admin.dto.GetStoreDetailInfoResponse
 import com.clip.admin.dto.GetStoreInfoResponse
+import com.clip.admin.dto.UpdateStoreDetailRequest
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import java.util.*
@@ -61,6 +64,25 @@ class StoreController {
         GetStoreCategoryResponse(UUID.randomUUID().toString(), "한식"),
         GetStoreCategoryResponse(UUID.randomUUID().toString(), "일식")
     )
+
+    @PutMapping("/store/{id}")
+    @ResponseBody
+    fun update(
+        @PathVariable id: String,
+        @RequestBody request: UpdateStoreDetailRequest
+    ): GetStoreDetailInfoResponse {
+        return GetStoreDetailInfoResponse(
+            id,
+            request.name,
+            request.imgUrl,
+            request.introduction,
+            request.isRegistered,
+            request.longitude,
+            request.latitude,
+            request.storeCategoryId,
+            "KOREAN"
+        )
+    }
 
 
 }
