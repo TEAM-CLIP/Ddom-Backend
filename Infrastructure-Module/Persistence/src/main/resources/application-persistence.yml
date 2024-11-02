@@ -1,7 +1,7 @@
 spring:
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://${DB_URL}:3306/lettering
+      jdbc-url: jdbc:mysql://${DB_URL}:3306/ddom
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
       driver-class-name: com.mysql.cj.jdbc.Driver
