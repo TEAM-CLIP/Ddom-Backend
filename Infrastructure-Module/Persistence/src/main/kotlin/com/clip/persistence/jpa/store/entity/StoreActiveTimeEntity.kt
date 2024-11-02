@@ -22,16 +22,16 @@ class StoreActiveTimeEntity(
         nullable = false,
         columnDefinition = "varchar(20)",
     )
-    val dayOfWeek: DayOfWeek = dayOfWeek
+    var dayOfWeek: DayOfWeek = dayOfWeek
 
     @Column(nullable = false)
-    val startAt: LocalTime = startAt
+    var startAt: LocalTime = startAt
 
     @Column(nullable = false)
-    val endAt: LocalTime = endAt
+    var endAt: LocalTime = endAt
 
     @Column(nullable = false)
-    val isActive: Boolean = isActive
+    var isActive: Boolean = isActive
 
     @Column(nullable = false)
     val storeId: String = storeId

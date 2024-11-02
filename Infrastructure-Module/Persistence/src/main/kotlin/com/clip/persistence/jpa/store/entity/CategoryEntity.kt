@@ -18,7 +18,7 @@ class CategoryEntity(
         nullable = false,
         columnDefinition = "varchar(20)",
     )
-    val type: Storetype = type
+    var type: Storetype = type
 
     @Enumerated(EnumType.STRING)
     @Column(

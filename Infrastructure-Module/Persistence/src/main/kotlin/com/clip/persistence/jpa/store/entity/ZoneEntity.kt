@@ -13,10 +13,10 @@ class ZoneEntity(
 ) : AggregateRoot<ZoneEntity>(id) {
 
     @Column(nullable = false, length = 100)
-    val name: String = name
+    var name: String = name
 
     @Column(nullable = false)
-    val boundary: String = boundary
+    var boundary: String = boundary
 
     @Enumerated(EnumType.STRING)
     @Column(
