@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!-- 공통 head -->
+<th:block th:replace="~{fragments/head :: headFragment}"></th:block>
+
+<body>
+    <!-- 공통 header -->
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+
+    <!-- 각 페이지의 콘텐츠가 들어갈 영역 -->
+    <th:block layout:fragment="content"></th:block>
+
+<!--    &lt;!&ndash; 공통 footer &ndash;&gt;-->
+<!--    <th:block th:replace="fragments/footer :: footer"></th:block>-->
+</body>
+</html>

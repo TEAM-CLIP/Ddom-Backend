@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+
+<th:block layout:fragment="content">
+    <div class="container mt-5 pt-3">
+        <!-- 페이지 제목 및 검색 영역 -->
+        <div class="row mb-4 align-items-center">
+            <div class="col">
+                <h2><i class="bi bi-shop me-2"></i>가게 정보 관리</h2>
+            </div>
+            <div class="col-auto">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchInput" placeholder="가게 검색...">
+                    <button class="btn btn-primary" type="button" onclick="searchStores()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 테이블 영역 -->
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                    <tr>
+                        <th scope="col">가게 ID</th>
+                        <th scope="col">가게명</th>
+                        <th scope="col">위치</th>
+                        <th scope="col">제휴 여부</th>
+                        <th scope="col">관리</th>
+                    </tr>
+                    </thead>
+                    <tbody id="storeTableBody">
+                    <!-- JavaScript로 동적 생성될 영역 -->
+                    </tbody>
+                </table>
+
+                <!-- 로딩 스피너 -->
+                <div id="loadingSpinner" class="text-center d-none">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- 페이지네이션 -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <!-- JavaScript로 동적 생성될 영역 -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 포함 -->
+    <div th:replace="admin/store/storeEdit :: editStoreModal"></div>
+
+    <!-- JavaScript 파일 포함 -->
+    <script th:src="@{/js/store/StoreApi.js}"></script>
+    <script th:src="@{/js/store/StoreUpdate.js}"></script>
+    <script th:src="@{/js/store/StoreList.js}"></script>
+</th:block>
+</html>
