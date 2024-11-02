@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    group:
+      dev:
+        - persistence
+      local:
+        - persistence-local
+    active: local

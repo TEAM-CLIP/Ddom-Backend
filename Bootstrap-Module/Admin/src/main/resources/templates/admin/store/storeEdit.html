@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="editStoreModal">
+    <div class="modal fade" id="editStoreModal" tabindex="-1" aria-labelledby="editStoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editStoreModalLabel">가게 정보 수정</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editStoreForm">
+                        <input type="hidden" id="storeId">
+
+                        <!-- 가게명 -->
+                        <div class="mb-3">
+                            <label for="storeName" class="form-label">가게명</label>
+                            <input type="text" class="form-control" id="storeName" required>
+                        </div>
+
+                        <!-- 이미지 URL -->
+                        <div class="mb-3">
+                            <label for="imgUrl" class="form-label">이미지 URL</label>
+                            <input type="url" class="form-control" id="imgUrl" required>
+                            <div class="mt-2">
+                                <img id="previewImage" src="" alt="가게 이미지 미리보기"
+                                     class="img-thumbnail d-none" style="max-height: 200px">
+                            </div>
+                        </div>
+
+                        <!-- 소개글 -->
+                        <div class="mb-3">
+                            <label for="introduction" class="form-label">가게 소개</label>
+                            <textarea class="form-control" id="introduction" rows="3" required></textarea>
+                        </div>
+
+                        <!-- 위치 정보 -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="longitude" class="form-label">경도</label>
+                                <input type="number" class="form-control" id="longitude"
+                                       step="0.000001" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="latitude" class="form-label">위도</label>
+                                <input type="number" class="form-control" id="latitude"
+                                       step="0.000001" required>
+                            </div>
+                        </div>
+
+                        <!-- 가게 유형  -->
+                        <div class="mb-3">
+                            <label for="storeType" class="form-label">가게 유형</label>
+                            <div class="dropdown">
+                                <input type="text"
+                                       class="form-control"
+                                       id="categorySearch"
+                                       placeholder="가게 유형을 검색하세요..."
+                                       autocomplete="off"
+                                       data-bs-toggle="dropdown">
+                                <input type="hidden" id="selectedCategoryId">
+                                <ul class="dropdown-menu w-100" id="categoryDropdown">
+                                    <!-- 검색 결과가 여기에 동적으로 추가됨 -->
+                                </ul>
+                            </div>
+                            <small class="text-muted" id="selectedCategory"></small>
+                        </div>
+
+                        <!-- 등록 여부 -->
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="isRegistered">
+                                <label class="form-check-label" for="isRegistered">등록 여부</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="StoreUpdate.saveChanges()">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>
