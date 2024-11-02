@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="contactList">
+    <div class="mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">연락처 목록</h5>
+            <button type="button" class="btn btn-primary btn-sm" onclick="StoreContact.openAddModal()">
+                <i class="bi bi-plus"></i> 연락처 추가
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>유형</th>
+                        <th>값</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody id="contactTableBody">
+                    <!-- 연락처 목록이 동적으로 추가됨 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</th:block>
+</html>

@@ -44,7 +44,7 @@ class StoreController {
         return GetStoreDetailInfoResponse(
             UUID.randomUUID().toString(),
             "store1",
-            "https://store1.com",
+            "https://images.unsplash.com/photo-1529927066849-79b791a69825?q=80&w=3569&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             "store1 introduction",
             true,
             37.123456,
