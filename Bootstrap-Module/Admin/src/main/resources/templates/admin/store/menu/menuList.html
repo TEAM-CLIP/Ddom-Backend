@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="menuList">
+    <div class="mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">메뉴 목록</h5>
+            <button type="button" class="btn btn-primary btn-sm" onclick="StoreMenu.openAddModal()">
+                <i class="bi bi-plus"></i> 메뉴 추가
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>메뉴명</th>
+                        <th>가격</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody id="menuTableBody">
+                    <!-- 메뉴 목록이 동적으로 추가됨 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</th:block>
+</html>
