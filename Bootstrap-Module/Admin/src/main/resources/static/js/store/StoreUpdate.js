@@ -79,6 +79,10 @@ const StoreUpdate = {
         }
 
 
+        // 가게 메뉴 조회
+        StoreMenu.init(storeData.id);
+
+
         this.updateImagePreview(storeData.imgUrl);
     },
 
@@ -114,7 +118,7 @@ const StoreUpdate = {
             this.showError('올바른 위치 정보를 입력해주세요.');
             return false;
         }
-        if (!data.storeType) {
+        if (!data.storeCategoryId) {
             this.showError('가게 유형을 선택해주세요.');
             return false;
         }
