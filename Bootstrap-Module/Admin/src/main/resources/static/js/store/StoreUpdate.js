@@ -83,6 +83,8 @@ const StoreUpdate = {
         StoreMenu.init(storeData.id);
         // 가게 연락처 조회
         StoreContact.init(storeData.id);
+        // 가게 할인 조회
+        StoreDiscount.init(storeData.id);
 
 
         this.updateImagePreview(storeData.imgUrl);
