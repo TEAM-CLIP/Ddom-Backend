@@ -27,30 +27,9 @@ const StoreActiveTime = {
     },
 
     initializeTimePickers() {
-        const timeConfig = {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            time_24hr: true,
-            locale: "ko",
-            minuteIncrement: 30
-        };
-
-        // 시작 시간 선택기
-        this.timePickers.push(
-            flatpickr("#startAt", {
-                ...timeConfig,
-                defaultHour: 9,
-            })
-        );
-
-        // 종료 시간 선택기
-        this.timePickers.push(
-            flatpickr("#endAt", {
-                ...timeConfig,
-                defaultHour: 18,
-            })
-        );
+        // flatpickr 제거하고 기본 time input 사용
+        document.getElementById('startAt').value = '09:00';
+        document.getElementById('endAt').value = '18:00';
     },
 
     async loadActiveTimes() {
@@ -159,8 +138,8 @@ const StoreActiveTime = {
             this.currentActiveTimeId = activeTimeId;
             document.getElementById('activetimeModalLabel').textContent = '운영 시간 수정';
             document.getElementById('dayOfWeek').value = activeTime.dayOfWeek;
-            this.timePickers[0].setDate(activeTime.startAt);
-            this.timePickers[1].setDate(activeTime.endAt);
+            document.getElementById('startAt').value = activeTime.startAt.substring(0, 5);
+            document.getElementById('endAt').value = activeTime.endAt.substring(0, 5);
             document.getElementById('isActive').checked = activeTime.isActive;
             console.log(activeTime);
             this.activeTimeModal.show();
@@ -175,8 +154,8 @@ const StoreActiveTime = {
 
         const activeTimeData = {
             dayOfWeek: document.getElementById('dayOfWeek').value,
-            startAt: document.getElementById('startAt').value,
-            endAt: document.getElementById('endAt').value,
+            startAt: document.getElementById('startAt').value + ':00',
+            endAt: document.getElementById('endAt').value + ':00',
             isActive: document.getElementById('isActive').checked
         };
 
