@@ -25,8 +25,8 @@ interface GetStoreUseCase {
     )
 
     data class DiscountPolicy(
-        val discountType: String?,
-        val discountDescription: String?
+        val discountType: String,
+        val discountDescription: String
     )
 
     data class UnregisteredStore(

@@ -36,7 +36,7 @@ class StoreQueryService(
                         storeType = categoryMap.getValue(storeCategory.categoryId).type.name,
                         discountPolicy = discount.map {
                             GetStoreUseCase.DiscountPolicy(
-                                discountType = it.discountPolicyMethod.toString(),
+                                discountType = it.discountPolicyMethod.name,
                                 discountDescription = it.title
                             )
                         }

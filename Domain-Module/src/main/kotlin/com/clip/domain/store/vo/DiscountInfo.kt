@@ -4,8 +4,8 @@ import com.clip.domain.common.DomainId
 import com.clip.domain.store.enums.DiscountPolicyMethod
 
 data class DiscountInfo(
-    val discountId: DomainId?,
-    val discountPolicyMethod: DiscountPolicyMethod?,
-    val title: String?,
+    val discountId: DomainId,
+    val discountPolicyMethod: DiscountPolicyMethod,
+    val title: String,
 ) {
 }
