@@ -16,6 +16,9 @@
                     <button class="btn btn-primary" type="button" onclick="searchStores()">
                         <i class="bi bi-search"></i>
                     </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="StoreUpdate.openAddModal()">
+                        <i class="bi bi-plus"></i> 가게 추가
+                    </button>
                 </div>
             </div>
         </div>
@@ -68,5 +71,7 @@
     <script th:src="@{/js/store/contact/StoreContactList.js}"></script>
     <script th:src="@{/js/store/discount/StoreDiscountApi.js}"></script>
     <script th:src="@{/js/store/discount/StoreDiscountList.js}"></script>
+    <script th:src="@{/js/store/activetime/StoreActiveTimeApi.js}"></script>
+    <script th:src="@{/js/store/activetime/StoreActiveTimeList.js}"></script>
 </th:block>
 </html>

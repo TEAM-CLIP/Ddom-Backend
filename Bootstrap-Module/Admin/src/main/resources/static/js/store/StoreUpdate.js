@@ -1,11 +1,13 @@
 const StoreUpdate = {
-    modal: null,
+    editModal: null,
+    addModal: null,
     currentStoreId: null,
     categories: [], // 카테고리 데이터 저장
     searchTimeout: null, // 검색 디바운싱을 위한 타이머
 
     init() {
-        this.modal = new bootstrap.Modal(document.getElementById('editStoreModal'));
+        this.editModal = new bootstrap.Modal(document.getElementById('editStoreModal'));
+        this.addModal = new bootstrap.Modal(document.getElementById('editStoreModal'));
         this.initializeEvents();
         this.loadCategories(); // 카테고리 데이터 로드
     },
@@ -25,6 +27,7 @@ const StoreUpdate = {
         document.getElementById('editStoreForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.saveChanges();
+            this.toggleSubPage(true);
         });
 
 
@@ -48,6 +51,16 @@ const StoreUpdate = {
             }
         });
     },
+
+
+    openAddModal() {
+        this.currentStoreId = null;
+        document.getElementById('editStoreModalLabel').textContent = '가게 추가';
+        document.getElementById('editStoreForm').reset();
+        this.show(this.addModal);
+        this.toggleSubPage(false);
+    },
+
 
     updateImagePreview(url) {
         const previewImage = document.getElementById('previewImage');
@@ -85,6 +98,8 @@ const StoreUpdate = {
         StoreContact.init(storeData.id);
         // 가게 할인 조회
         StoreDiscount.init(storeData.id);
+        // 가게 영업시간 조회
+        StoreActiveTime.init(storeData.id);
 
 
         this.updateImagePreview(storeData.imgUrl);
@@ -104,7 +119,11 @@ const StoreUpdate = {
     },
 
     validateForm() {
+        console.log(document.getElementById('storeName'))
+
+
         const data = this.getFormData();
+        console.log(data)
 
         if (!data.name) {
             this.showError('가게명을 입력해주세요.');
@@ -133,11 +152,19 @@ const StoreUpdate = {
     async saveChanges() {
         if (!this.validateForm()) return;
 
+        const storeData = this.getFormData();
+
+
         try {
-            const storeData = this.getFormData();
-            await StoreApi.updateStore(this.currentStoreId, storeData);
-            this.showSuccess('가게 정보가 성공적으로 수정되었습니다.');
-            this.hide();
+            if (this.currentStoreId === null) {
+                await StoreApi.createStore(storeData);
+                this.showSuccess('새로운 가게가 등록되었습니다.');
+                this.hide(this.addModal);
+            } else {
+                await StoreApi.updateStore(this.currentStoreId, storeData);
+                this.showSuccess('가게 정보가 성공적으로 수정되었습니다.');
+                this.hide(this.editModal);
+            }
             StorePage.loadStores();
         } catch (error) {
             console.error('Error saving store:', error);
@@ -153,8 +180,7 @@ const StoreUpdate = {
 
     async loadCategories() {
         try {
-            const categories = await StoreApi.fetchCategories();
-            this.categories = categories;
+            this.categories = await StoreApi.fetchCategories();
             this.filterCategories(''); // 초기 목록 표시
         } catch (error) {
             console.error('Error loading categories:', error);
@@ -218,12 +244,29 @@ const StoreUpdate = {
         dropdown.parentElement.classList.remove('show');
     },
 
-    show() {
-        this.modal.show();
+    show(modal) {
+        modal.show();
     },
 
-    hide() {
-        this.modal.hide();
+    showEditModal() {
+        this.editModal.show();
+    },
+
+    hide(modal) {
+        modal.hide();
+    },
+
+
+    toggleSubPage(show){
+        const containers = [
+            "menuList",
+            "contactList",
+            "discountList",
+            "activetimeList"
+        ]
+        containers.forEach(container => {
+            document.getElementById(container).style.display = show ? 'block' : 'none';
+        });
     },
 
     showError(message) {

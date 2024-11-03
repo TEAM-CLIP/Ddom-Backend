@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="activetimeModal">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <div class="modal fade" id="activetimeModal" tabindex="-1" aria-labelledby="activetimeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="activetimeModalLabel">운영 시간 추가/수정</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="activetimeForm">
+                        <input type="hidden" id="activetimeId">
+                        <!-- 요일 선택을 위한 select 태그 -->
+                        <div class="mb-3">
+                            <label for="dayOfWeek" class="form-label">요일</label>
+                            <select class="form-select" id="dayOfWeek" required>
+                                <option value="">요일 선택</option>
+                                <!-- 요일 옵션은 JavaScript로 동적으로 추가됨 -->
+                            </select>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="startAt" class="form-label">시작 시간</label>
+                                <input type="time"
+                                       class="form-control"
+                                       id="startAt"
+                                       required>
+                            </div>
+                            <div class="col">
+                                <label for="endAt" class="form-label">종료 시간</label>
+                                <input type="time"
+                                       class="form-control"
+                                       id="endAt"
+                                       required>
+                            </div>
+                        </div>
+                        <!-- 운영 여부 체크박스 추가 -->
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="isActive" checked>
+                                <label class="form-check-label" for="isActive">
+                                    운영 여부
+                                </label>
+                                <small class="form-text text-muted d-block">
+                                    체크 해제 시 해당 요일은 운영하지 않음으로 표시됩니다.
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="StoreActiveTime.saveActiveTime()">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+</th:block>
+</html>
