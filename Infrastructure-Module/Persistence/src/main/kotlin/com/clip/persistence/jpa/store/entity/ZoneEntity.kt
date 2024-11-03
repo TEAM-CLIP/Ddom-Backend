@@ -15,7 +15,6 @@ class ZoneEntity(
     @Column(nullable = false, length = 100)
     var name: String = name
 
-    @Column(nullable = false)
     var boundary: String = boundary
 
     @Enumerated(EnumType.STRING)
