@@ -1,4 +1,4 @@
-package com.clip.admin
+package com.clip.admin.controller
 
 import com.clip.admin.dto.CreateDiscountPolicyRequest
 import com.clip.admin.dto.GetDiscountPolicyInfoResponse

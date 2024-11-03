@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="activetimeList">
+    <div class="mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">운영 시간 목록</h5>
+            <button type="button" class="btn btn-primary btn-sm" onclick="StoreActiveTime.openAddModal()">
+                <i class="bi bi-plus"></i> 운영 시간 추가
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>요일</th>
+                        <th>시작 시간</th>
+                        <th>종료 시간</th>
+                        <th>영업 여부</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody id="activetimeTableBody">
+                    <!-- 운영 시간 목록이 동적으로 추가됨 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</th:block>
+</html>
