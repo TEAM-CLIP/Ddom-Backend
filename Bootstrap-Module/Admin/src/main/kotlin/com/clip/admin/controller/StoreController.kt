@@ -1,4 +1,4 @@
-package com.clip.admin
+package com.clip.admin.controller
 
 import com.clip.admin.dto.GetStoreCategoryResponse
 import com.clip.admin.dto.GetStoreDetailInfoResponse

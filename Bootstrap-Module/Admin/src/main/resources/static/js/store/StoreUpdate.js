@@ -85,6 +85,8 @@ const StoreUpdate = {
         StoreContact.init(storeData.id);
         // 가게 할인 조회
         StoreDiscount.init(storeData.id);
+        // 가게 영업시간 조회
+        StoreActiveTime.init(storeData.id);
 
 
         this.updateImagePreview(storeData.imgUrl);
