@@ -56,7 +56,7 @@
     </div>
 
     <!-- 모달 포함 -->
-    <div th:replace="admin/store/storeEdit :: editStoreModal"></div>
+    <div th:replace="~{admin/store/storeEdit :: editStoreModal}"></div>
 
     <!-- JavaScript 파일 포함 -->
     <script th:src="@{/js/store/StoreApi.js}"></script>
@@ -66,5 +66,7 @@
     <script th:src="@{/js/store/menu/StoreMenuList.js}"></script>
     <script th:src="@{/js/store/contact/StoreContactApi.js}"></script>
     <script th:src="@{/js/store/contact/StoreContactList.js}"></script>
+    <script th:src="@{/js/store/discount/StoreDiscountApi.js}"></script>
+    <script th:src="@{/js/store/discount/StoreDiscountList.js}"></script>
 </th:block>
 </html>
