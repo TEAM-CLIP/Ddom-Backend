@@ -6,7 +6,7 @@ import com.clip.persistence.jpa.common.EntityStatus
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "category")
+@Table(name = "store_category")
 class StoreCategoryEntity(
     id: String,
     type: Storetype

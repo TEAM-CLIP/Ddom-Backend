@@ -1,0 +1,1 @@
+ALTER TABLE store_menu MODIFY COLUMN price BIGINT;

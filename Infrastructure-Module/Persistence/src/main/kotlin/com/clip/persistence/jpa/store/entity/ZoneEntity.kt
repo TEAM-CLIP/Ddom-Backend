@@ -9,11 +9,14 @@ import jakarta.persistence.*
 class ZoneEntity(
     id: String,
     name: String,
+    description: String?,
     boundary: String
 ) : AggregateRoot<ZoneEntity>(id) {
 
     @Column(nullable = false, length = 100)
     var name: String = name
+
+    var description: String? = description
 
     var boundary: String = boundary
 
