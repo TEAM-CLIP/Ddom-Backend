@@ -40,7 +40,7 @@ class StoreEntity(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId", insertable = false, updatable = false)
-    lateinit var category: CategoryEntity
+    lateinit var category: StoreCategoryEntity
 
     @Column(nullable = false)
     var zoneId: String = zoneId

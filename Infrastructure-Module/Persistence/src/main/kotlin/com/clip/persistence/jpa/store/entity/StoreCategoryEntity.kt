@@ -7,10 +7,10 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "category")
-class CategoryEntity(
+class StoreCategoryEntity(
     id: String,
     type: Storetype
-) : AggregateRoot<CategoryEntity>(id) {
+) : AggregateRoot<StoreCategoryEntity>(id) {
 
     @Enumerated(EnumType.STRING)
     @Column(
