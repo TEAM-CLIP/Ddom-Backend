@@ -33,6 +33,7 @@ const StorePage = {
     async loadStores() {
         try {
             this.showLoading(true);
+            console.log(this.state.currentPage, this.state.size)
             const data = await StoreApi.fetchStores(this.state.currentPage, this.state.size);
             this.renderStoreTable(data);
             this.renderPagination(data);
@@ -139,7 +140,8 @@ const StorePage = {
             this.showLoading(true);
             const storeData = await StoreApi.fetchStore(id);
             StoreUpdate.fillModalWithData(storeData);
-            StoreUpdate.show();
+            StoreUpdate.showEditModal();
+            StoreUpdate.toggleSubPage(true);
         } catch (error) {
             console.error('Error:', error);
             this.showError('가게 정보를 불러오는 중 오류가 발생했습니다.');

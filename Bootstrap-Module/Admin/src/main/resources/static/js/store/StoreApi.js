@@ -2,8 +2,10 @@ const StoreApi = {
     // API 엔드포인트
     endpoints: {
         list: '/store',
+        create: '/store',
         detail: (id) => `/store/${id}`,
         update: (id) => `/store/${id}`,
+        delete: (id) => `/store/${id}`,
         category: '/store/category'
     },
 
@@ -57,6 +59,34 @@ const StoreApi = {
             return await response.json();
         } catch (error) {
             console.error('Error fetching categories:', error);
+            throw error;
+        }
+    },
+
+    async createStore(storeData) {
+        try {
+            const response = await fetch(this.endpoints.create, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(storeData)
+            });
+            if (!response.ok) throw new Error('가게 등록에 실패했습니다.');
+        } catch (error) {
+            console.error('Error creating store:', error);
+            throw error;
+        }
+    },
+
+    async deleteStore(id) {
+        try {
+            const response = await fetch(this.endpoints.delete(id), {
+                method: 'DELETE'
+            });
+            if (!response.ok) throw new Error('가게 삭제에 실패했습니다.');
+        } catch (error) {
+            console.error('Error deleting store:', error);
             throw error;
         }
     }

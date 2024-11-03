@@ -1,14 +1,14 @@
 package com.clip.admin.controller
 
-import com.clip.admin.dto.GetStoreCategoryResponse
-import com.clip.admin.dto.GetStoreDetailInfoResponse
-import com.clip.admin.dto.GetStoreInfoResponse
-import com.clip.admin.dto.UpdateStoreDetailRequest
+import com.clip.admin.dto.*
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import java.util.*
@@ -65,6 +65,15 @@ class StoreController {
         GetStoreCategoryResponse(UUID.randomUUID().toString(), "일식")
     )
 
+
+    @PostMapping("/store")
+    @ResponseBody
+    fun createStore(
+        @RequestBody request: CreateStoreRequest
+    ){
+        println("create store: $request")
+    }
+
     @PutMapping("/store/{id}")
     @ResponseBody
     fun update(
@@ -84,6 +93,14 @@ class StoreController {
         )
     }
 
+
+    @DeleteMapping("/store/{id}")
+    @ResponseBody
+    fun deleteStore(
+        @PathVariable id: String
+    ){
+        println("delete store: $id")
+    }
 
 
 
