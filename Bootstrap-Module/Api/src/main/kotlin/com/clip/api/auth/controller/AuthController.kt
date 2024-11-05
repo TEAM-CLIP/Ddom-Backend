@@ -33,7 +33,7 @@ class AuthController(
                 )
             )
 
-            is SocialLoginUsecase.NonRegistered -> ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+            is SocialLoginUsecase.NonRegistered -> ResponseEntity.status(HttpStatus.CREATED)
                 .body(SocialLoginResponse.NonRegistered(response.registerToken))
         }
     }
