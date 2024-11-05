@@ -36,7 +36,7 @@ interface AuthApi {
                 ]
             ),
             ApiResponse(
-                responseCode = "401",
+                responseCode = "201",
                 description = "신규 회원 가입 필요",
                 content = [
                     Content(
