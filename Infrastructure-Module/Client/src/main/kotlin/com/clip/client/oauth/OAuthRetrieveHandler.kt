@@ -9,6 +9,6 @@ interface OAuthRetrieveHandler {
 
     data class OAuthResponse(
         val socialId: String,
-        val email: String,
+        val email: String? = null
     )
 }

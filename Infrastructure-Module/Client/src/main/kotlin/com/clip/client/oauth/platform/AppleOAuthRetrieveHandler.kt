@@ -27,11 +27,10 @@ class AppleOAuthRetrieveHandler(
     override fun getOAuthInfo(request: OAuthRetrieveHandler.OAuthRequest): OAuthRetrieveHandler.OAuthResponse {
         val kid = getHeaderKid(request.accessToken)
         val key = verifyIdTokenAndGetKey(getApplePublicKeys(), kid).getRSAPublicKey()
-        val claims = JwtProvider.extractClaimsByKey(request.accessToken, key, APPLE_ISS, "sub", "email")
+        val claims = JwtProvider.extractClaimsByKey(request.accessToken, key, APPLE_ISS, "sub")
 
         return OAuthRetrieveHandler.OAuthResponse(
-            socialId = claims["sub"].toString(),
-            email = claims["email"].toString()
+            socialId = claims["sub"].toString()
         )
     }
 
