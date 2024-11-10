@@ -62,7 +62,9 @@ const StorePage = {
             return;
         }
 
-        stores.forEach(store => {
+        const storeContent = stores.content;
+
+        storeContent.forEach(store => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${store.id}</td>

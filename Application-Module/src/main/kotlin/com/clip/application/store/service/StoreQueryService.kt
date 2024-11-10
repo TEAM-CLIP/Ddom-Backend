@@ -1,10 +1,13 @@
 package com.clip.application.store.service
 
+import com.clip.application.store.port.`in`.GetStoreCategoryUseCase
 import com.clip.application.store.port.`in`.GetStoreUseCase
 import com.clip.application.store.port.`in`.GetZoneUseCase
 import com.clip.application.store.port.out.StoreCategoryManagementPort
 import com.clip.application.store.port.out.StoreManagementPort
 import com.clip.application.store.port.out.ZoneManagementPort
+import com.clip.common.paging.Page
+import com.clip.common.paging.PageRequest
 import com.clip.domain.common.DomainId
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -15,7 +18,7 @@ class StoreQueryService(
     private val storeManagementPort: StoreManagementPort,
     private val storeCategoryManagementPort: StoreCategoryManagementPort,
     private val zoneManagementPort: ZoneManagementPort
-) : GetStoreUseCase, GetZoneUseCase{
+) : GetStoreUseCase, GetStoreCategoryUseCase, GetZoneUseCase {
 
     override fun getAll(query: GetStoreUseCase.GetAllQuery): GetStoreUseCase.GetAllResponse {
         val stores = storeManagementPort.getAllStores(query.zoneId?.let { DomainId(it) })
@@ -59,7 +62,46 @@ class StoreQueryService(
         )
     }
 
-    override fun getAll(): GetZoneUseCase.GetAllResponse {
+    override fun getStoreDetail(query: GetStoreUseCase.GetDetailQuery): GetStoreUseCase.GetDetailResponse {
+        val store = storeManagementPort.getStoreBy(DomainId(query.storeId))
+        val storeCategory = storeCategoryManagementPort.getCategoryBy(store.storeCategory.categoryId)
+        return with(store) {
+            GetStoreUseCase.GetDetailResponse(
+                storeId = id.value,
+                storeName = storeInfo.name,
+                storeImageUrl = storeInfo.imgUrl,
+                introduction = storeInfo.introduction,
+                isRegistered = storeInfo.isRegistered,
+                longitude = storePlace.longitude,
+                latitude = storePlace.latitude,
+                storeCategoryId = storeCategory.id.value,
+                storeCategoryName = storeCategory.type.name
+            )
+        }
+    }
+
+    override fun getStorePaging(query: GetStoreUseCase.GetPagingQuery): Page<GetStoreUseCase.GetPagingResponse> {
+        val page = storeManagementPort.getAllStores(PageRequest(query.page, query.size))
+        return page.map {
+            GetStoreUseCase.GetPagingResponse(
+                storeId = it.id.value,
+                name = it.storeInfo.name,
+                region = zoneManagementPort.getBy(it.storePlace.zoneId).name,
+                isRegistered = it.storeInfo.isRegistered
+            )
+        }
+    }
+
+    override fun getAllCategories(): List<GetStoreCategoryUseCase.Response> {
+        return storeCategoryManagementPort.getAll().map {
+            GetStoreCategoryUseCase.Response(
+                id = it.id.value,
+                name = it.type.description
+            )
+        }
+    }
+
+    override fun getAllZones(): GetZoneUseCase.GetAllResponse {
         val zones = zoneManagementPort.getAllZones()
         return GetZoneUseCase.GetAllResponse(
             zones = zones.map {

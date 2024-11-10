@@ -85,7 +85,10 @@ const StoreUpdate = {
 
         // 카테고리 설정
         if (storeData.storeCategoryId) {
+            console.log(storeData.storeCategoryId)
+            console.log(this.categories)
             const category = this.categories.find(c => c.id === storeData.storeCategoryId);
+            console.log(category)
             if (category) {
                 this.selectCategory(category);
             }

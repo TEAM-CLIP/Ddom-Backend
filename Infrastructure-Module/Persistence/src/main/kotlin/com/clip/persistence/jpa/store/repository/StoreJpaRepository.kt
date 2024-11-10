@@ -5,13 +5,15 @@ import com.clip.persistence.jpa.common.EntityStatus
 import com.clip.persistence.jpa.store.entity.FavoriteStoreEntity
 import com.clip.persistence.jpa.store.entity.StoreDiscountPolicyEntity
 import com.clip.persistence.jpa.store.entity.StoreEntity
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 
 interface StoreJpaRepository : JpaRepository<StoreEntity, String> {
     @Query(
         """
-    SELECT r.storeId, COUNT(r.id)
+    SELECT new kotlin.Pair(r.storeId, COUNT(r.id))
     FROM FavoriteStoreEntity r
     WHERE r.storeId IN :storeIds
     AND r.entityStatus = :entityStatus
@@ -21,7 +23,7 @@ interface StoreJpaRepository : JpaRepository<StoreEntity, String> {
     fun countAllFavoriteBy(
         storeIds: List<String>,
         entityStatus: EntityStatus
-    ): List<Array<Any>>
+    ): List<Pair<String, Long>>
 
     @Query(
         """
@@ -40,21 +42,6 @@ interface StoreJpaRepository : JpaRepository<StoreEntity, String> {
 
     @Query(
         """
-        SELECT r
-        FROM StoreDiscountPolicyEntity r
-        WHERE r.storeId IN :storeIds
-        AND r.method = :discountPolicyMethod
-        AND r.entityStatus = :entityStatus
-    """,
-    )
-    fun findAllBy(
-        storeIds: List<String>,
-        discountPolicyMethod: DiscountPolicyMethod,
-        entityStatus: EntityStatus,
-    ): List<StoreDiscountPolicyEntity>
-
-    @Query(
-        """
     SELECT s
     FROM StoreEntity s
     WHERE (:zoneId IS NULL OR s.zoneId = :zoneId)
@@ -66,20 +53,63 @@ interface StoreJpaRepository : JpaRepository<StoreEntity, String> {
         entityStatus: EntityStatus
     ): List<StoreEntity>
 
+    @Query(
+        """
+        SELECT s
+        FROM StoreEntity s
+        WHERE s.entityStatus = :entityStatus
+    """
+    )
+    fun findAllBy(pageable: Pageable, entityStatus: EntityStatus): Page<StoreEntity>
+
+    @Query(
+        """
+        SELECT s
+        FROM StoreDiscountPolicyEntity s
+        WHERE s.storeId = :storeId
+        AND s.entityStatus = :entityStatus
+    """
+    )
+    fun findAllDiscountPolicyBy(storeId: String, entityStatus: EntityStatus): List<StoreDiscountPolicyEntity>
+
+    @Query(
+        """
+            SELECT r
+            FROM StoreDiscountPolicyEntity r
+            WHERE r.storeId IN :storeIds
+            AND r.method = :discountPolicyMethod
+            AND r.entityStatus = :entityStatus
+        """,
+    )
+    fun findAllDiscountPolicyBy(
+        storeIds: List<String>,
+        discountPolicyMethod: DiscountPolicyMethod,
+        entityStatus: EntityStatus,
+    ): List<StoreDiscountPolicyEntity>
+
 }
 
-fun StoreJpaRepository.countAllActiveFavoriteUserByStoreId(storeIds: List<String>): List<Array<Any>> =
+fun StoreJpaRepository.countAllFavoriteUser(storeIds: List<String>): List<Pair<String, Long>> =
     countAllFavoriteBy(storeIds, EntityStatus.ACTIVE)
 
-fun StoreJpaRepository.findAllActiveFavoriteStoreIdAndUserId(storeIds: List<String>, userId: String): List<FavoriteStoreEntity> =
+fun StoreJpaRepository.findAllActiveBy(storeIds: List<String>, userId: String): List<FavoriteStoreEntity> =
     findAllBy(storeIds, userId, EntityStatus.ACTIVE)
 
-fun StoreJpaRepository.findAllByStoreIdInAndPolicyMethod(storeIds: List<String>, discountPolicyMethod: DiscountPolicyMethod): List<StoreDiscountPolicyEntity> =
-    findAllBy(storeIds, discountPolicyMethod, EntityStatus.ACTIVE)
-
-fun StoreJpaRepository.findAllActiveStoreByZoneId(zoneId: String?): List<StoreEntity> =
+fun StoreJpaRepository.findAllActiveBy(zoneId: String?): List<StoreEntity> =
     findAllBy(zoneId, EntityStatus.ACTIVE)
 
+fun StoreJpaRepository.findAllActiveBy(pageable: Pageable): Page<StoreEntity> =
+    findAllBy(pageable, EntityStatus.ACTIVE)
 
+
+fun StoreJpaRepository.findAllActiveDiscountPolicyBy(
+    storeIds: List<String>,
+    discountPolicyMethod: DiscountPolicyMethod
+): List<StoreDiscountPolicyEntity> =
+    findAllDiscountPolicyBy(storeIds, discountPolicyMethod, EntityStatus.ACTIVE)
+
+
+fun StoreJpaRepository.findAllActiveDiscountPolicyBy(storeId: String): List<StoreDiscountPolicyEntity> =
+    findAllDiscountPolicyBy(storeId, EntityStatus.ACTIVE)
 
 
