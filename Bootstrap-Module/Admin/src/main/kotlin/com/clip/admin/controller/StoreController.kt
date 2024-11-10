@@ -6,7 +6,6 @@ import com.clip.application.store.port.`in`.GetStoreUseCase
 import com.clip.common.paging.Page
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
-import java.util.*
 
 
 @Controller
@@ -72,7 +71,7 @@ class StoreController(
     @GetMapping("/store/category")
     @ResponseBody
     fun getStoreCategory(): List<GetStoreCategoryResponse>{
-        val response = getStoreCategoryUseCase.getAll()
+        val response = getStoreCategoryUseCase.getAllCategories()
         return response.map {
             GetStoreCategoryResponse(
                 it.id,

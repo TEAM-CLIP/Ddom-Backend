@@ -11,7 +11,7 @@ class ZoneController(
     private val getZoneUseCase: GetZoneUseCase
 ): ZoneApi {
     override fun getZones(userId: String): GetAllZoneResponse {
-        val response = getZoneUseCase.getAll()
+        val response = getZoneUseCase.getAllCategories()
         return GetAllZoneResponse(
             response.zones.map {
                 ZoneResponse(

@@ -2,7 +2,7 @@ package com.clip.application.store.port.`in`
 
 interface GetZoneUseCase {
 
-        fun getAll(): GetAllResponse
+        fun getAllZones(): GetAllResponse
 
         data class GetAllResponse(
             val zones: List<ZoneDetail>

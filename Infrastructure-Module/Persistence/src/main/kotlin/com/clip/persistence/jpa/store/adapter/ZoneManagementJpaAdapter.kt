@@ -5,6 +5,7 @@ import com.clip.domain.common.DomainId
 import com.clip.domain.store.entity.Zone
 import com.clip.persistence.jpa.store.ZoneMapper
 import com.clip.persistence.jpa.store.repository.ZoneJpaRepository
+import com.clip.persistence.jpa.store.repository.findAllActiveZone
 import org.springframework.stereotype.Repository
 
 @Repository

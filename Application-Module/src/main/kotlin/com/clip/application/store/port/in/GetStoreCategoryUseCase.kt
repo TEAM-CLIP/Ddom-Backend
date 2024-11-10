@@ -4,7 +4,7 @@ import com.clip.domain.store.vo.StoreCategoryInfo
 
 interface GetStoreCategoryUseCase {
 
-    fun getAll(): List<Response>
+    fun getAllCategories(): List<Response>
 
     data class Response(
         val id: String,
