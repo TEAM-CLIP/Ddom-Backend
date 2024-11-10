@@ -16,4 +16,15 @@ class StoreCategoryManagementJpaAdapter(
         val categories = storeCategoryJpaRepository.findAllActiveStoreCategoryByIds(categoryIds.map { it.value })
         return categories.map { StoreCategoryMapper.toStoreCategory(it) }
     }
+
+    override fun getCategoryBy(categoryId: DomainId): StoreCategory {
+        val category = storeCategoryJpaRepository.findById(categoryId.value)
+            .orElseThrow { throw IllegalStateException("Category not found") }
+        return StoreCategoryMapper.toStoreCategory(category)
+    }
+
+    override fun getAll(): List<StoreCategory> {
+        val categories = storeCategoryJpaRepository.findAll()
+        return categories.map { StoreCategoryMapper.toStoreCategory(it) }
+    }
 }

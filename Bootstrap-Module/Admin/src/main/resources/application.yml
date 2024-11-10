@@ -2,7 +2,9 @@ spring:
   profiles:
     group:
       dev:
+        - security-local
         - persistence
       local:
+        - security-local
         - persistence-local
     active: local

@@ -1,6 +1,6 @@
 package com.clip.persistence.jpa.store.entity
 
-import com.clip.domain.store.enums.Storetype
+import com.clip.domain.store.enums.StoreType
 import com.clip.persistence.jpa.common.AggregateRoot
 import com.clip.persistence.jpa.common.EntityStatus
 import jakarta.persistence.*
@@ -9,7 +9,7 @@ import jakarta.persistence.*
 @Table(name = "category")
 class StoreCategoryEntity(
     id: String,
-    type: Storetype
+    type: StoreType
 ) : AggregateRoot<StoreCategoryEntity>(id) {
 
     @Enumerated(EnumType.STRING)
@@ -18,7 +18,7 @@ class StoreCategoryEntity(
         nullable = false,
         columnDefinition = "varchar(20)",
     )
-    var type: Storetype = type
+    var type: StoreType = type
 
     @Enumerated(EnumType.STRING)
     @Column(

@@ -5,4 +5,8 @@ import com.clip.domain.store.entity.StoreCategory
 
 interface StoreCategoryManagementPort {
     fun getCategoriesBy(categoryIds: List<DomainId>): List<StoreCategory>
+
+    fun getCategoryBy(categoryId: DomainId): StoreCategory
+
+    fun getAll(): List<StoreCategory>
 }
