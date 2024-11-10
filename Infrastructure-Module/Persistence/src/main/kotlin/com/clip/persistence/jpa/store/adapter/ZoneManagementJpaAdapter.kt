@@ -16,4 +16,9 @@ class ZoneManagementJpaAdapter(
             .orElseThrow { throw IllegalStateException("Zone not found") }
         return ZoneMapper.toZone(zone)
     }
+
+    override fun getAllZones(): List<Zone> {
+        val zones = zoneJpaRepository.findAllActiveZone()
+        return zones.map { ZoneMapper.toZone(it) }
+    }
 }

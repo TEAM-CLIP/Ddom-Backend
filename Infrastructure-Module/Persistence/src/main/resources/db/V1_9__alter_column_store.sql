@@ -1,0 +1,1 @@
+ALTER TABLE zone ADD COLUMN description VARCHAR(255) NULL;

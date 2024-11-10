@@ -1,12 +1,8 @@
 package com.clip.application.store.service
 
-import com.clip.application.store.port.`in`.GetStoreCategoryUseCase
 import com.clip.application.store.port.`in`.GetStoreUseCase
 import com.clip.application.store.port.out.StoreCategoryManagementPort
 import com.clip.application.store.port.out.StoreManagementPort
-import com.clip.application.store.port.out.ZoneManagementPort
-import com.clip.common.paging.Page
-import com.clip.common.paging.PageRequest
 import com.clip.domain.common.DomainId
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -17,7 +13,7 @@ class StoreQueryService(
     private val storeManagementPort: StoreManagementPort,
     private val storeCategoryManagementPort: StoreCategoryManagementPort,
     private val zoneManagementPort: ZoneManagementPort
-) : GetStoreUseCase, GetStoreCategoryUseCase {
+) : GetStoreUseCase, GetStoreCategoryUseCase, GetZoneUseCase {
 
     override fun getAll(query: GetStoreUseCase.GetAllQuery): GetStoreUseCase.GetAllResponse {
         val stores = storeManagementPort.getAllStores(query.zoneId?.let { DomainId(it) })
@@ -98,5 +94,18 @@ class StoreQueryService(
                 name = it.type.description
             )
         }
+    }
+
+    override fun getAll(): GetZoneUseCase.GetAllResponse {
+        val zones = zoneManagementPort.getAllZones()
+        return GetZoneUseCase.GetAllResponse(
+            zones = zones.map {
+                GetZoneUseCase.ZoneDetail(
+                    id = it.id.value,
+                    name = it.name,
+                    description = it.description
+                )
+            }
+        )
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE category RENAME TO store_category;

@@ -23,7 +23,8 @@ class AuthController(
     ): ResponseEntity<SocialLoginResponse> {
         val command = SocialLoginUsecase.Command(
             provider = provider,
-            accessToken = request.accessToken
+            accessToken = request.accessToken,
+            email = request.email
         )
         return when (val response = socialLoginUsecase.login(command)) {
             is SocialLoginUsecase.Success -> ResponseEntity.ok(
@@ -33,7 +34,7 @@ class AuthController(
                 )
             )
 
-            is SocialLoginUsecase.NonRegistered -> ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+            is SocialLoginUsecase.NonRegistered -> ResponseEntity.status(HttpStatus.CREATED)
                 .body(SocialLoginResponse.NonRegistered(response.registerToken))
         }
     }

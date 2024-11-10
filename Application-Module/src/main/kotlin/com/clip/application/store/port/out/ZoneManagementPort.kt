@@ -6,4 +6,5 @@ import com.clip.domain.store.entity.Zone
 interface ZoneManagementPort {
 
     fun getBy(id: DomainId): Zone
+    fun getAllZones(): List<Zone>
 }

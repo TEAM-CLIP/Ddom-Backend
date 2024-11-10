@@ -8,6 +8,7 @@ interface SocialLoginUsecase {
     data class Command(
         val provider: String,
         val accessToken: String,
+        val email: String? = null
     )
 
     sealed class Response {
