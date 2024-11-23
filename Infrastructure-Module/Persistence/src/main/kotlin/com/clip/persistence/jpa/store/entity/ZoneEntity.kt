@@ -10,7 +10,7 @@ class ZoneEntity(
     id: String,
     name: String,
     description: String?,
-    boundary: String
+    boundary: String?
 ) : AggregateRoot<ZoneEntity>(id) {
 
     @Column(nullable = false, length = 100)
@@ -18,7 +18,7 @@ class ZoneEntity(
 
     var description: String? = description
 
-    var boundary: String = boundary
+    var boundary: String? = boundary
 
     @Enumerated(EnumType.STRING)
     @Column(
